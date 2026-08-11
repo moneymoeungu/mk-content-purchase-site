@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>매일경제 기사 콘텐츠 구매 안내</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="brand">매일경제 <span>콘텐츠 구매 안내</span></div>
+    <nav class="nav-links">
+      <a href="#pricing">사용료 안내</a>
+      <a href="#application">신청서 작성</a>
+      <a href="#inquiry">문의하기</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>매일경제 기사, 이렇게 구매하세요</h1>
+    <p>기사(텍스트/사진) 재사용을 원하시는 경우, 아래 사용료를 확인하시고 문의 폼으로 간편하게 접수해 주세요.<br>담당자 확인 후 이메일로 회신드립니다.</p>
+  </div>
+</section>
+
+<main class="container">
+
+  <section id="pricing" class="section">
+    <h2>1. 콘텐츠 사용료 안내</h2>
+    <p class="section-desc">1년 단위 사용 계약 기준, 건당 사용료입니다.</p>
+
+    <div class="table-wrap">
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>사용처</th>
+            <th>용도</th>
+            <th class="align-right">건당 사용료(VAT별도)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td rowspan="3" class="category">방송</td><td>TV/OTT</td><td class="align-right">800,000원</td></tr>
+          <tr><td>유튜브</td><td class="align-right">500,000원</td></tr>
+          <tr><td>영화</td><td class="align-right">1,000,000원</td></tr>
+
+          <tr><td rowspan="2" class="category">출판</td><td>도서</td><td class="align-right">350,000원</td></tr>
+          <tr><td>학술지, 교과서 등</td><td class="align-right">150,000원</td></tr>
+
+          <tr><td rowspan="4" class="category">온라인 게재</td><td>홈페이지</td><td class="align-right">300,000원</td></tr>
+          <tr><td>SNS(블로그, 인스타그램, 페이스북)</td><td class="align-right">500,000원</td></tr>
+          <tr><td>뉴스레터</td><td class="align-right">300,000원</td></tr>
+          <tr><td>사내 인트라넷</td><td class="align-right">300,000원</td></tr>
+
+          <tr><td rowspan="3" class="category">광고/홍보</td><td>오프라인 광고 소재 제작</td><td class="align-right">3,000,000원</td></tr>
+          <tr><td>인쇄물(팜플렛, 브로슈어 등)</td><td class="align-right">700,000원</td></tr>
+          <tr><td>전시회 활용</td><td class="align-right">600,000원</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="notice-banner">
+      무단 사용 적발 시 <strong>30배의 배상금 청구 및 법적 조치</strong>가 진행될 수 있습니다.
+    </div>
+    <p class="notice-small">※ 비영리·무료 목적의 전시라 하더라도, 기사 원문을 전시·복제하여 이용하실 경우에는 별도의 뉴스콘텐츠 구매 절차가 적용됩니다.</p>
+  </section>
+
+  <section id="application" class="section">
+    <h2>2. 콘텐츠 구매 신청서 작성</h2>
+    <p class="section-desc">구매를 확정하셨다면 아래 내용을 입력해 제출해 주세요. 담당자 검토(청구액 확인) 후 <strong>콘텐츠 사용허가서</strong>가 입력하신 e-mail로 자동 발급됩니다.</p>
+
+    <form id="application-form" class="inquiry-form">
+      <div class="form-row form-row-split">
+        <div>
+          <label for="appCompanyName">법인명 <span class="required">*</span></label>
+          <input type="text" id="appCompanyName" name="appCompanyName">
+        </div>
+        <div>
+          <label for="appBizRegNo">사업자등록번호 <span class="required">*</span></label>
+          <input type="text" id="appBizRegNo" name="appBizRegNo" placeholder="000-00-00000">
+        </div>
+      </div>
+
+      <div class="form-row form-row-split">
+        <div>
+          <label for="appAddress">주소 <span class="required">*</span></label>
+          <input type="text" id="appAddress" name="appAddress">
+        </div>
+        <div>
+          <label for="appPhone">전화 <span class="required">*</span></label>
+          <input type="text" id="appPhone" name="appPhone">
+        </div>
+      </div>
+
+      <div class="form-row form-row-split">
+        <div>
+          <label for="appManagerName">담당자명 <span class="required">*</span></label>
+          <input type="text" id="appManagerName" name="appManagerName">
+        </div>
+        <div>
+          <label for="appEmail">e-mail <span class="required">*</span></label>
+          <input type="email" id="appEmail" name="appEmail" placeholder="사용허가서를 받으실 주소">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label>구매 기사 정보 <span class="required">*</span></label>
+        <div id="article-list"></div>
+        <button type="button" id="article-add-btn" class="btn btn-ghost">+ 기사 추가</button>
+      </div>
+
+      <div class="form-row">
+        <label>사용목적 <span class="required">*</span></label>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="appPurposeCategory" value="방송"><span>방송</span></label>
+          <label class="radio-option"><input type="radio" name="appPurposeCategory" value="출판"><span>출판</span></label>
+          <label class="radio-option"><input type="radio" name="appPurposeCategory" value="온라인 게재"><span>온라인 게재</span></label>
+          <label class="radio-option"><input type="radio" name="appPurposeCategory" value="광고/홍보"><span>광고/홍보</span></label>
+          <label class="radio-option"><input type="radio" name="appPurposeCategory" value="기타"><span>기타</span></label>
+        </div>
+        <input type="text" id="appPurposeDetail" name="appPurposeDetail" placeholder="예: 유튜브 영상에 삽입">
+      </div>
+
+      <div class="form-row">
+        <label for="appSpecialNote">특이사항 <span class="optional">(선택)</span></label>
+        <textarea id="appSpecialNote" name="appSpecialNote" rows="3"></textarea>
+      </div>
+
+      <div class="form-row">
+        <label for="appTaxInvoiceEmail">세금계산서 수신 메일 <span class="required">*</span></label>
+        <input type="email" id="appTaxInvoiceEmail" name="appTaxInvoiceEmail">
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-submit">신청서 제출하기</button>
+    </form>
+
+    <div id="application-success" class="success-box hidden">
+      <div class="success-title">신청서가 접수되었습니다</div>
+      <p>담당자가 청구액을 확인한 후, 콘텐츠 사용허가서를 e-mail로 발급해 드립니다.</p>
+      <a id="application-pdf-download" class="btn btn-ghost hidden" download="신청서.pdf">제출한 신청서 PDF 다운로드</a>
+      <button type="button" id="application-reset" class="btn btn-ghost">새 신청서 작성하기</button>
+    </div>
+
+    <div id="application-error" class="error-box hidden"></div>
+
+    <p class="submit-guide">참고용 양식이 필요하시면 <a href="assets/매경_콘텐츠구매신청서.xlsx" download>엑셀 파일로 다운로드</a>할 수 있습니다. (제출은 위 폼으로 해주세요)</p>
+  </section>
+
+  <section id="inquiry" class="section">
+    <h2>3. 문의하기</h2>
+    <p class="section-desc">기사 링크와 사용 목적을 남겨주시면 담당자가 확인 후 회신드립니다. 가격표·신청 절차 등 궁금한 점은 "기타 문의"란에 자유롭게 남겨주세요.</p>
+
+    <form id="inquiry-form" class="inquiry-form">
+      <div class="form-row">
+        <label for="articleUrl">기사 링크(URL) <span class="required">*</span></label>
+        <input type="url" id="articleUrl" name="articleUrl" placeholder="https://www.mk.co.kr/...">
+      </div>
+
+      <div class="form-row form-row-split">
+        <div>
+          <label for="purposeCategory">사용 목적 <span class="required">*</span></label>
+          <select id="purposeCategory" name="purposeCategory">
+            <option value="" selected disabled>선택해주세요</option>
+            <option value="방송">방송</option>
+            <option value="출판">출판</option>
+            <option value="온라인 게재">온라인 게재</option>
+            <option value="광고/홍보">광고/홍보</option>
+            <option value="기타">기타</option>
+          </select>
+        </div>
+        <div>
+          <label for="purposeDetail">세부 용도 <span class="required">*</span></label>
+          <input type="text" id="purposeDetail" name="purposeDetail" placeholder="예: 유튜브, 사내 인트라넷 등">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="specialNote">특이사항 <span class="optional">(선택)</span></label>
+        <textarea id="specialNote" name="specialNote" rows="3" placeholder="사용 조건 중 애매하거나 별도로 안내가 필요한 사항이 있다면 적어주세요."></textarea>
+      </div>
+
+      <div class="form-row">
+        <label for="etcInquiry">기타 문의 <span class="optional">(선택)</span></label>
+        <textarea id="etcInquiry" name="etcInquiry" rows="3" placeholder="가격, 신청 절차 등 궁금한 점을 자유롭게 남겨주세요."></textarea>
+      </div>
+
+      <div class="form-row form-row-split">
+        <div>
+          <label for="companyName">회사명 <span class="required">*</span></label>
+          <input type="text" id="companyName" name="companyName" required>
+        </div>
+        <div>
+          <label for="managerName">담당자명 <span class="optional">(선택)</span></label>
+          <input type="text" id="managerName" name="managerName">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="contact">이메일 또는 연락처 <span class="required">*</span></label>
+        <input type="text" id="contact" name="contact" placeholder="회신받으실 이메일 또는 전화번호" required>
+        <p class="field-hint">회신을 위해 반드시 입력해주세요.</p>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-submit">문의 제출하기</button>
+    </form>
+
+    <div id="inquiry-success" class="success-box hidden">
+      <div class="success-title">문의가 접수되었습니다</div>
+      <p>담당자 확인 후 회신드리겠습니다.</p>
+      <button type="button" id="inquiry-reset" class="btn btn-ghost">새 문의 작성하기</button>
+    </div>
+
+    <div id="inquiry-error" class="error-box hidden"></div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>기타 문의사항은 moon.chaerin@mkinternet.com 으로 연락주시기 바랍니다.</p>
+    <p class="copyright">(주) 매경에이엑스 (www.mk.co.kr)</p>
+  </div>
+</footer>
+
+<div id="faq-chat-widget">
+  <div id="faq-chat-panel" class="hidden">
+    <div class="faq-chat-header">
+      <span>무엇이든 물어보세요</span>
+      <button type="button" id="faq-chat-close" aria-label="닫기">×</button>
+    </div>
+    <div id="faq-chat-messages" class="faq-chat-messages">
+      <div class="faq-msg faq-msg-bot">안녕하세요! 콘텐츠 구매 관련 자주 묻는 질문에 답해드려요. 예: "PDF로 받을 수 있나요?"</div>
+    </div>
+    <form id="faq-chat-form" class="faq-chat-form">
+      <input type="text" id="faq-chat-input" placeholder="질문을 입력하세요" autocomplete="off">
+      <button type="submit" class="btn btn-primary">전송</button>
+    </form>
+  </div>
+  <button type="button" id="faq-chat-toggle" aria-label="문의 챗봇 열기">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M6 5L8 9" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M18 5L16 9" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round"/>
+      <ellipse cx="12" cy="13" rx="7" ry="6.5" fill="#FFFFFF"/>
+      <circle cx="9" cy="12" r="2.3" fill="#E8801A"/>
+      <circle cx="15" cy="12" r="2.3" fill="#E8801A"/>
+      <circle cx="9" cy="12" r="1" fill="#FFFFFF"/>
+      <circle cx="15" cy="12" r="1" fill="#FFFFFF"/>
+      <path d="M12 14.5L10.7 16.5H13.3L12 14.5Z" fill="#C96C0F"/>
+    </svg>
+  </button>
+</div>
+
+<script src="js/script.js"></script>
+<script src="js/faq-data.js"></script>
+<script src="js/faq-chat.js"></script>
+</body>
+</html>
