@@ -7,6 +7,18 @@ var NOTIFY_EMAIL_LIST = NOTIFY_EMAILS.join(","); // MailApp 수신자용 (쉼표
 var NOTIFY_EMAIL_PRIMARY = NOTIFY_EMAILS[0]; // 안내문에 "문의처"로 표시할 대표 메일
 var DOC_FONT = "맑은 고딕"; // PDF 문서(신청서/허가서) 공통 폰트
 
+// 문의/신청서가 쌓이는 스프레드시트 (URL의 /d/ 와 /edit 사이 값)
+var SPREADSHEET_ID = "1tXVt9_9n7bFiyn5nltCeNrcxo5feCTziu8Wte059wCk";
+
+function getSpreadsheet_() {
+  return SpreadsheetApp.openById(SPREADSHEET_ID);
+}
+
+// 전화번호 등 숫자처럼 보이는 값을 글자 그대로 저장 (앞자리 0 유지). 셀에는 ' 없이 표시됩니다.
+function asText_(v) {
+  return v ? "'" + v : "";
+}
+
 // ── 문의(1차 상담) ──────────────────────────────
 var SHEET_NAME = "문의내역";
 var HEADER = ["접수일시", "기사링크", "사용목적(대분류)", "사용목적(상세)", "특이사항", "특이사항여부", "기타문의", "회사명", "담당자명", "연락처/이메일", "처리상태"];
@@ -52,7 +64,7 @@ function handleInquirySubmit_(data) {
     data.etcInquiry || "",
     data.companyName || "",
     data.managerName || "",
-    data.contact || "",
+    asText_(data.contact),
     "신규"
   ];
   sheet.appendRow(row);
@@ -69,7 +81,7 @@ function handleInquirySubmit_(data) {
 }
 
 function getOrCreateSheet_() {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var ss = getSpreadsheet_();
   var sheet = ss.getSheetByName(SHEET_NAME);
   if (!sheet) {
     sheet = ss.insertSheet(SHEET_NAME);
@@ -107,9 +119,9 @@ function handleApplicationSubmit_(data) {
   var row = [
     timestamp,
     data.companyName || "",
-    data.bizRegNo || "",
+    asText_(data.bizRegNo),
     data.address || "",
-    data.phone || "",
+    asText_(data.phone),
     data.managerName || "",
     data.email || "",
     JSON.stringify(data.articles || []),
@@ -135,7 +147,7 @@ function handleApplicationSubmit_(data) {
 }
 
 function getOrCreateApplicationSheet_() {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var ss = getSpreadsheet_();
   var sheet = ss.getSheetByName(SHEET_NAME_APPLICATION);
   if (!sheet) {
     sheet = ss.insertSheet(SHEET_NAME_APPLICATION);
@@ -201,7 +213,7 @@ function onEditInstallable(e) {
     if (status !== "승인") return;
 
     if (a.billingAmount === "" || a.billingAmount === null || typeof a.billingAmount === "undefined") {
-      SpreadsheetApp.getActiveSpreadsheet().toast("청구액을 입력하면 자동으로 사용허가서가 발급됩니다.", "발급 보류", 6);
+      e.source.toast("청구액을 입력하면 자동으로 사용허가서가 발급됩니다.", "발급 보류", 6);
       return;
     }
 
@@ -213,8 +225,14 @@ function onEditInstallable(e) {
     sheet.getRange(row, COL_STATUS).setValue("발급완료");
     sheet.getRange(row, COL_SENT_AT).setValue(now);
   } catch (err) {
-    SpreadsheetApp.getActiveSpreadsheet().toast("허가서 발급 중 오류: " + err.message, "오류", 10);
+    e.source.toast("허가서 발급 중 오류: " + err.message, "오류", 10);
   }
+}
+
+// ── 최초 1회 실행: SPREADSHEET_ID 시트에 onEditInstallable 트리거를 연결합니다.
+// 기존 onEditInstallable 트리거는 지운 뒤, 에디터 상단에서 installEditTrigger 선택 후 ▷ 실행하세요.
+function installEditTrigger() {
+  ScriptApp.newTrigger("onEditInstallable").forSpreadsheet(SPREADSHEET_ID).onEdit().create();
 }
 
 function mapRowToApplication_(v) {
@@ -296,7 +314,7 @@ function sendLicenseEmail_(a, pdfBlob) {
 // 않으므로 이 함수를 한 번 실행해서 지우면, 다음 신청서 제출 시 새 구조로 자동 재생성됩니다.
 // 에디터 상단 함수 선택 드롭다운에서 resetApplicationSheet 선택 후 ▷ 실행 버튼으로 실행하세요.
 function resetApplicationSheet() {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var ss = getSpreadsheet_();
   var sheet = ss.getSheetByName(SHEET_NAME_APPLICATION);
   if (sheet) {
     ss.deleteSheet(sheet);

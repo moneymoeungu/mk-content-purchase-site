@@ -107,6 +107,13 @@ a { color: var(--orange-dark); }
   margin: 0 0 8px;
 }
 
+.h2-note {
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: normal;
+  margin-left: 6px;
+}
+
 .section-desc {
   color: var(--text-muted);
   font-size: 14px;

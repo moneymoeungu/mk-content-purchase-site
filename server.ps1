@@ -8,7 +8,7 @@ param(
 )
 
 # 배포한 Google Apps Script 웹앱 URL을 여기에 붙여넣으세요. (예: https://script.google.com/macros/s/xxxx/exec)
-$AppsScriptUrl = "https://script.google.com/macros/s/AKfycbyJW-3ZtsdLjG8ptKwud3HIiDcMFxTd3DCUIr04g537nzgCmxIDEtVGAbG2W1LsmIwB/exec"
+$AppsScriptUrl = "https://script.google.com/macros/s/AKfycbzJ8xD6mdq_DBhGgNtghKUp7vjbmFFPbL6mMJVO366E9cNVHFDIawTNK1kPzqYb3VRo/exec"
 
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
 $dataDir = Join-Path $root "data"
