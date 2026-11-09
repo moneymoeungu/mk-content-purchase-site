@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<base target="_top">
+<style>
+  :root {
+    --orange: #E8801A;
+    --orange-dark: #C96C0F;
+    --orange-light: #FDF0E2;
+    --white: #FFFFFF;
+    --text: #2B2B2B;
+    --text-muted: #6B6B6B;
+    --border: #D9D9D9;
+    --bg: #FAFAFA;
+    --danger-bg: #FCECEC;
+    --danger-text: #B3261E;
+    --radius-sm: 8px;
+    --radius-lg: 12px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 24px 16px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Malgun Gothic", "맑은 고딕", sans-serif;
+  }
+
+  .chat {
+    max-width: 720px;
+    height: calc(100vh - 48px);
+    margin: 0 auto;
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .chat-header {
+    background: var(--orange);
+    color: var(--white);
+    padding: 14px 20px;
+    font-weight: 700;
+    font-size: 15px;
+  }
+
+  .chat-header span {
+    font-weight: 400;
+    font-size: 12px;
+    margin-left: 8px;
+  }
+
+  .chat-messages {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .msg {
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    max-width: 85%;
+    font-size: 14px;
+    line-height: 1.6;
+    white-space: pre-line;
+  }
+
+  .msg-bot {
+    background: var(--orange-light);
+    align-self: flex-start;
+  }
+
+  .msg-user {
+    background: var(--orange);
+    color: var(--white);
+    align-self: flex-end;
+  }
+
+  .msg-pending { color: var(--text-muted); }
+
+  .msg-error {
+    background: var(--danger-bg);
+    color: var(--danger-text);
+    align-self: flex-start;
+  }
+
+  .chat-form {
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px;
+    border-top: 0.5px solid var(--border);
+  }
+
+  .chat-form input {
+    flex: 1;
+    padding: 10px 12px;
+    font-size: 14px;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+  }
+
+  .chat-form input:focus {
+    outline: none;
+    border-color: var(--orange);
+  }
+
+  .chat-form button {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 700;
+    color: var(--white);
+    background: var(--orange);
+    border: 0.5px solid var(--orange-dark);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+
+  .chat-form button:hover { background: var(--orange-dark); }
+
+  .chat-form button:disabled {
+    background: var(--border);
+    border-color: var(--border);
+    cursor: default;
+  }
+</style>
+</head>
+<body>
+
+<div class="chat">
+  <div class="chat-header">매경 콘텐츠 구매 내부 FAQ<span>사내 전용</span></div>
+  <div id="messages" class="chat-messages">
+    <div class="msg msg-bot">고객 문의 응대 기준을 찾아드려요. 예: "고객이 기사를 PDF로 쓰고 싶다는데 추가 비용이 있나요?"</div>
+  </div>
+  <form id="form" class="chat-form">
+    <input type="text" id="input" placeholder="질문을 입력하세요" autocomplete="off">
+    <button type="submit" id="send">보내기</button>
+  </form>
+</div>
+
+<script>
+  var messages = document.getElementById("messages");
+  var form = document.getElementById("form");
+  var input = document.getElementById("input");
+  var send = document.getElementById("send");
+  var chatLog = []; // Claude에 보내는 대화 기록 [{ role, content }]
+
+  function addMessage(text, kind) {
+    var el = document.createElement("div");
+    el.className = "msg msg-" + kind;
+    el.textContent = text;
+    messages.appendChild(el);
+    messages.scrollTop = messages.scrollHeight;
+    return el;
+  }
+
+  function setBusy(busy) {
+    input.disabled = busy;
+    send.disabled = busy;
+    if (!busy) input.focus();
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var query = input.value.trim();
+    if (!query) return;
+
+    addMessage(query, "user");
+    input.value = "";
+    chatLog.push({ role: "user", content: query });
+
+    var pending = addMessage("답변을 찾는 중…", "bot msg-pending");
+    setBusy(true);
+
+    google.script.run
+      .withSuccessHandler(function (answer) {
+        pending.remove();
+        addMessage(answer, "bot");
+        chatLog.push({ role: "assistant", content: answer });
+        setBusy(false);
+      })
+      .withFailureHandler(function (err) {
+        pending.remove();
+        addMessage("오류가 발생했습니다: " + err.message, "error");
+        chatLog.pop(); // 실패한 질문은 기록에서 빼서 user/assistant 순서를 유지
+        setBusy(false);
+      })
+      .askFaq(chatLog);
+  });
+</script>
+
+</body>
+</html>
