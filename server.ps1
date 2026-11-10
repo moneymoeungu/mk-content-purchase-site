@@ -8,22 +8,22 @@ param(
 )
 
 # 배포한 Google Apps Script 웹앱 URL을 여기에 붙여넣으세요. (예: https://script.google.com/macros/s/xxxx/exec)
-$AppsScriptUrl = "https://script.google.com/macros/s/AKfycbzJ8xD6mdq_DBhGgNtghKUp7vjbmFFPbL6mMJVO366E9cNVHFDIawTNK1kPzqYb3VRo/exec"
+$AppsScriptUrl = "https://script.google.com/macros/s/AKfycbx6XwLC7NXJx5qnaRWcpgL9VYlX45qW19lIvPvOZwmDH4H4XnOz0sn0vihbYvDtRXLzHw/exec"
 
-$root = Split-Path -Parent $MyInvocation.MyCommand.Path
+$root = $PSScriptRoot
 $dataDir = Join-Path $root "data"
 $csvPath = Join-Path $dataDir "inquiries.csv"
 $applicationCsvPath = Join-Path $dataDir "applications.csv"
 
-if (-not (Test-Path $dataDir)) { New-Item -ItemType Directory -Path $dataDir | Out-Null }
+if (-not [System.IO.Directory]::Exists($dataDir)) { [System.IO.Directory]::CreateDirectory($dataDir) | Out-Null }
 
 $csvHeader = "접수일시,기사링크,사용목적(대분류),사용목적(상세),특이사항,특이사항여부,기타문의,회사명,담당자명,연락처/이메일,처리상태"
-if (-not (Test-Path $csvPath)) {
+if (-not [System.IO.File]::Exists($csvPath)) {
     [System.IO.File]::WriteAllText($csvPath, $csvHeader + "`r`n", (New-Object System.Text.UTF8Encoding($true)))
 }
 
 $applicationCsvHeader = "접수일시,법인명,사업자등록번호,주소,전화,담당자명,e-mail,기사목록,사용목적,특이사항,세금계산서메일,청구액,처리상태,허가서발송일시"
-if (-not (Test-Path $applicationCsvPath)) {
+if (-not [System.IO.File]::Exists($applicationCsvPath)) {
     [System.IO.File]::WriteAllText($applicationCsvPath, $applicationCsvHeader + "`r`n", (New-Object System.Text.UTF8Encoding($true)))
 }
 
@@ -105,9 +105,16 @@ try {
                 $line = ($fields -join ",") + "`r`n"
                 [System.IO.File]::AppendAllText($csvPath, $line, (New-Object System.Text.UTF8Encoding($false)))
 
-                Send-ToAppsScript $body | Out-Null
+                $appsScriptResult = Send-ToAppsScript $body
 
-                $responseBody = '{"success":true}'
+                if ($appsScriptResult -and $appsScriptResult.success -eq $false) {
+                    Write-Warning ("Apps Script가 오류를 반환함: " + $appsScriptResult.error)
+                    $responseObj = @{ success = $false; error = $appsScriptResult.error }
+                }
+                else {
+                    $responseObj = @{ success = $true; sheetsSynced = ($null -ne $appsScriptResult) }
+                }
+                $responseBody = $responseObj | ConvertTo-Json -Compress
                 $buffer = [System.Text.Encoding]::UTF8.GetBytes($responseBody)
                 $response.ContentType = "application/json; charset=utf-8"
                 $response.StatusCode = 200
@@ -163,7 +170,7 @@ try {
             }
             else {
                 $filePath = Join-Path $root ($path.TrimStart("/") -replace "/", "\")
-                if ((Test-Path $filePath) -and -not (Get-Item $filePath).PSIsContainer) {
+                if ([System.IO.File]::Exists($filePath)) {
                     $ext = [System.IO.Path]::GetExtension($filePath).ToLower()
                     $contentType = if ($mimeTypes.ContainsKey($ext)) { $mimeTypes[$ext] } else { "application/octet-stream" }
                     $bytes = [System.IO.File]::ReadAllBytes($filePath)

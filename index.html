@@ -13,8 +13,8 @@
     <div class="brand">매일경제 <span>콘텐츠 구매 안내</span></div>
     <nav class="nav-links">
       <a href="#pricing">사용료 안내</a>
-      <a href="#application">신청서 작성</a>
-      <a href="#inquiry">문의하기</a>
+      <a href="#forms-section" data-tab-link="application">구매 신청</a>
+      <a href="#forms-section" data-tab-link="inquiry">사전 문의</a>
     </nav>
   </div>
 </header>
@@ -22,43 +22,163 @@
 <section class="hero">
   <div class="container">
     <h1>매일경제 기사, 이렇게 구매하세요</h1>
-    <p>기사(텍스트/사진) 재사용을 원하시는 경우, 아래 사용료를 확인하시고 문의 폼으로 간편하게 접수해 주세요.<br>담당자 확인 후 이메일로 회신드립니다.</p>
+    <p>기사(텍스트/사진) 재사용을 원하시는 경우, 아래 사용료를 확인하시고 온라인으로 간편하게 접수해 주세요.<br>담당자 확인 후 이메일로 회신 및 사용허가서를 발급해 드립니다.</p>
+    <div class="process-steps">
+      <div class="process-step">
+        <span class="step-num">STEP 1</span>
+        <span class="step-title">단가 및 예상 견적 확인</span>
+      </div>
+      <div class="process-arrow">→</div>
+      <div class="process-step">
+        <span class="step-num">STEP 2</span>
+        <span class="step-title">신청서 또는 문의 접수</span>
+      </div>
+      <div class="process-arrow">→</div>
+      <div class="process-step">
+        <span class="step-num">STEP 3</span>
+        <span class="step-title">청구액 안내·허가서 발급</span>
+      </div>
+      <div class="process-arrow">→</div>
+      <div class="process-step">
+        <span class="step-num">STEP 4</span>
+        <span class="step-title">계산서 수령 후 30일 내 결제</span>
+      </div>
+    </div>
   </div>
 </section>
 
 <main class="container">
 
   <section id="pricing" class="section">
-    <h2>1. 콘텐츠 사용료 안내</h2>
-    <p class="section-desc">1년 단위 사용 계약 기준, 건당 사용료입니다.</p>
+    <div class="section-head">
+      <div>
+        <h2>1. 콘텐츠 사용료 안내 및 견적 계산</h2>
+        <p class="section-desc">1년 단위 사용 계약 기준, 건당 사용료입니다. 표에서 항목을 클릭하면 예상 견적을 계산하고 바로 신청할 수 있습니다.</p>
+      </div>
+    </div>
 
     <div class="table-wrap">
-      <table class="price-table">
+      <table class="price-table" id="price-table">
         <thead>
           <tr>
             <th>사용처</th>
             <th>용도</th>
             <th class="align-right">건당 사용료(VAT별도)</th>
+            <th class="align-center">빠른 선택</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td rowspan="3" class="category">방송</td><td>TV/OTT</td><td class="align-right">800,000원</td></tr>
-          <tr><td>유튜브</td><td class="align-right">500,000원</td></tr>
-          <tr><td>영화</td><td class="align-right">1,000,000원</td></tr>
+          <tr class="price-row" data-category="방송" data-detail="TV/OTT" data-price="800000">
+            <td rowspan="3" class="category">방송</td>
+            <td>TV/OTT</td>
+            <td class="align-right price-cell">800,000원</td>
+            <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
+          </tr>
+          <tr class="price-row" data-category="방송" data-detail="유튜브" data-price="500000">
+            <td>유튜브</td>
+            <td class="align-right price-cell">500,000원</td>
+            <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
+          </tr>
+          <tr class="price-row" data-category="방송" data-detail="영화" data-price="1000000">
+            <td>영화</td>
+            <td class="align-right price-cell">1,000,000원</td>
+            <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
+          </tr>
 
-          <tr><td rowspan="2" class="category">출판</td><td>도서</td><td class="align-right">350,000원</td></tr>
-          <tr><td>학술지, 교과서 등</td><td class="align-right">150,000원</td></tr>
+          <tr class="price-row" data-category="출판" data-detail="도서" data-price="350000">
+            <td rowspan="2" class="category">출판</td>
+            <td>도서</td>
+            <td class="align-right price-cell">350,000원</td>
+            <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
+          </tr>
+          <tr class="price-row" data-category="출판" data-detail="학술지, 교과서 등" data-price="150000">
+            <td>학술지, 교과서 등</td>
+            <td class="align-right price-cell">150,000원</td>
+            <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
+          </tr>
 
-          <tr><td rowspan="4" class="category">온라인 게재</td><td>홈페이지</td><td class="align-right">300,000원</td></tr>
-          <tr><td>SNS(블로그, 인스타그램, 페이스북)</td><td class="align-right">500,000원</td></tr>
-          <tr><td>뉴스레터</td><td class="align-right">300,000원</td></tr>
-          <tr><td>사내 인트라넷</td><td class="align-right">300,000원</td></tr>
+          <tr class="price-row" data-category="온라인 게재" data-detail="홈페이지" data-price="300000">
+            <td rowspan="4" class="category">온라인 게재</td>
+            <td>홈페이지</td>
+            <td class="align-right price-cell">300,000원</td>
+            <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
+          </tr>
+          <tr class="price-row" data-category="온라인 게재" data-detail="SNS(블로그, 인스타그램, 페이스북)" data-price="500000">
+            <td>SNS(블로그, 인스타그램, 페이스북)</td>
+            <td class="align-right price-cell">500,000원</td>
+            <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
+          </tr>
+          <tr class="price-row" data-category="온라인 게재" data-detail="뉴스레터" data-price="300000">
+            <td>뉴스레터</td>
+            <td class="align-right price-cell">300,000원</td>
+            <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
+          </tr>
+          <tr class="price-row" data-category="온라인 게재" data-detail="사내 인트라넷" data-price="300000">
+            <td>사내 인트라넷</td>
+            <td class="align-right price-cell">300,000원</td>
+            <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
+          </tr>
 
-          <tr><td rowspan="3" class="category">광고/홍보</td><td>오프라인 광고 소재 제작</td><td class="align-right">3,000,000원</td></tr>
-          <tr><td>인쇄물(팜플렛, 브로슈어 등)</td><td class="align-right">700,000원</td></tr>
-          <tr><td>전시회 활용</td><td class="align-right">600,000원</td></tr>
+          <tr class="price-row" data-category="광고/홍보" data-detail="오프라인 광고 소재 제작" data-price="3000000">
+            <td rowspan="3" class="category">광고/홍보</td>
+            <td>오프라인 광고 소재 제작</td>
+            <td class="align-right price-cell">3,000,000원</td>
+            <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
+          </tr>
+          <tr class="price-row" data-category="광고/홍보" data-detail="인쇄물(팜플렛, 브로슈어 등)" data-price="700000">
+            <td>인쇄물(팜플렛, 브로슈어 등)</td>
+            <td class="align-right price-cell">700,000원</td>
+            <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
+          </tr>
+          <tr class="price-row" data-category="광고/홍보" data-detail="전시회 활용" data-price="600000">
+            <td>전시회 활용</td>
+            <td class="align-right price-cell">600,000원</td>
+            <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
+          </tr>
         </tbody>
       </table>
+    </div>
+
+    <!-- 실시간 예상 견적 계산기 -->
+    <div class="calculator-card" id="calculator-card">
+      <div class="calc-header">
+        <span class="calc-badge">실시간 예상 견적 계산기</span>
+        <span class="calc-selected-label" id="calc-selected-label">위 가격표에서 용도를 선택해주세요 (기본: 온라인 게재 - 홈페이지)</span>
+      </div>
+      <div class="calc-body">
+        <div class="calc-controls">
+          <div class="calc-control-item">
+            <label for="calc-count">구매 건수</label>
+            <div class="qty-control">
+              <button type="button" id="calc-qty-minus" aria-label="건수 감소">−</button>
+              <input type="number" id="calc-count" value="1" min="1" max="99">
+              <button type="button" id="calc-qty-plus" aria-label="건수 증가">+</button>
+            </div>
+          </div>
+          <div class="calc-control-item calc-options">
+            <label class="checkbox-label">
+              <input type="checkbox" id="calc-opt-pdf">
+              <span>지면 PDF 파일 제공 (+300,000원/건)</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="calc-opt-academic">
+              <span>학술 연구 목적 정식 계약 (50% 할인)</span>
+            </label>
+          </div>
+        </div>
+        <div class="calc-result">
+          <div class="calc-price-box">
+            <div class="calc-price-label">예상 청구 금액 (VAT 별도)</div>
+            <div class="calc-price-value" id="calc-total-price">300,000원</div>
+            <div class="calc-price-vat" id="calc-vat-price">VAT 포함 시 330,000원</div>
+            <div class="calc-option-warn hidden" id="calc-option-warn"></div>
+          </div>
+          <div class="calc-actions">
+            <button type="button" id="calc-apply-btn" class="btn btn-primary">이 조건으로 구매 신청하기</button>
+            <button type="button" id="calc-inquire-btn" class="btn btn-ghost">이 조건으로 문의하기</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="notice-banner">
@@ -67,159 +187,206 @@
     <p class="notice-small">※ 비영리·무료 목적의 전시라 하더라도, 기사 원문을 전시·복제하여 이용하실 경우에는 별도의 뉴스콘텐츠 구매 절차가 적용됩니다.</p>
   </section>
 
-  <section id="application" class="section">
-    <h2>2. 콘텐츠 구매 신청서 작성</h2>
-    <p class="section-desc">구매를 확정하셨다면 아래 내용을 입력해 제출해 주세요. 담당자 검토(청구액 확인) 후 <strong>콘텐츠 사용허가서</strong>가 입력하신 e-mail로 자동 발급됩니다.</p>
-
-    <form id="application-form" class="inquiry-form">
-      <div class="form-row form-row-split">
-        <div>
-          <label for="appCompanyName">법인명 <span class="required">*</span></label>
-          <input type="text" id="appCompanyName" name="appCompanyName">
-        </div>
-        <div>
-          <label for="appBizRegNo">사업자등록번호 <span class="required">*</span></label>
-          <input type="text" id="appBizRegNo" name="appBizRegNo" placeholder="000-00-00000">
-        </div>
-      </div>
-
-      <div class="form-row form-row-split">
-        <div>
-          <label for="appAddress">주소 <span class="required">*</span></label>
-          <input type="text" id="appAddress" name="appAddress">
-        </div>
-        <div>
-          <label for="appPhone">전화 <span class="required">*</span></label>
-          <input type="text" id="appPhone" name="appPhone">
-        </div>
-      </div>
-
-      <div class="form-row form-row-split">
-        <div>
-          <label for="appManagerName">담당자명 <span class="required">*</span></label>
-          <input type="text" id="appManagerName" name="appManagerName">
-        </div>
-        <div>
-          <label for="appEmail">e-mail <span class="required">*</span></label>
-          <input type="email" id="appEmail" name="appEmail" placeholder="사용허가서를 받으실 주소">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <label>구매 기사 정보 <span class="required">*</span></label>
-        <div id="article-list"></div>
-        <button type="button" id="article-add-btn" class="btn btn-ghost">+ 기사 추가</button>
-      </div>
-
-      <div class="form-row">
-        <label>사용목적 <span class="required">*</span></label>
-        <div class="radio-group">
-          <label class="radio-option"><input type="radio" name="appPurposeCategory" value="방송"><span>방송</span></label>
-          <label class="radio-option"><input type="radio" name="appPurposeCategory" value="출판"><span>출판</span></label>
-          <label class="radio-option"><input type="radio" name="appPurposeCategory" value="온라인 게재"><span>온라인 게재</span></label>
-          <label class="radio-option"><input type="radio" name="appPurposeCategory" value="광고/홍보"><span>광고/홍보</span></label>
-          <label class="radio-option"><input type="radio" name="appPurposeCategory" value="기타"><span>기타</span></label>
-        </div>
-        <input type="text" id="appPurposeDetail" name="appPurposeDetail" placeholder="예: 유튜브 영상에 삽입">
-      </div>
-
-      <div class="form-row">
-        <label for="appSpecialNote">특이사항 <span class="optional">(선택)</span></label>
-        <textarea id="appSpecialNote" name="appSpecialNote" rows="3"></textarea>
-      </div>
-
-      <div class="form-row">
-        <label for="appTaxInvoiceEmail">세금계산서 수신 메일 <span class="required">*</span></label>
-        <input type="email" id="appTaxInvoiceEmail" name="appTaxInvoiceEmail">
-      </div>
-
-      <button type="submit" class="btn btn-primary btn-submit">신청서 제출하기</button>
-    </form>
-
-    <div id="application-success" class="success-box hidden">
-      <div class="success-title">신청서가 접수되었습니다</div>
-      <p>담당자가 청구액을 확인한 후, 콘텐츠 사용허가서를 e-mail로 발급해 드립니다.</p>
-      <a id="application-pdf-download" class="btn btn-ghost hidden" download="신청서.pdf">제출한 신청서 PDF 다운로드</a>
-      <button type="button" id="application-reset" class="btn btn-ghost">새 신청서 작성하기</button>
+  <section id="forms-section" class="section">
+    <div class="section-head">
+      <h2>2. 온라인 접수 (구매 신청 / 사전 문의)</h2>
+      <p class="section-desc">구매가 확정되셨다면 <strong>구매 신청서 작성</strong>을, 단가·조건 상담이 필요하시면 <strong>사전 문의하기</strong>를 선택해 주세요.</p>
     </div>
 
-    <div id="application-error" class="error-box hidden"></div>
-
-    <p class="submit-guide">참고용 양식이 필요하시면 <a href="assets/매경_콘텐츠구매신청서.xlsx" download>엑셀 파일로 다운로드</a>할 수 있습니다. (제출은 위 폼으로 해주세요)</p>
-  </section>
-
-  <section id="inquiry" class="section">
-    <h2>3. 문의하기 <span class="h2-note">&lt;챗봇에 먼저 문의해주세요&gt;</span></h2>
-    <p class="section-desc">기사 링크와 사용 목적을 남겨주시면 담당자가 확인 후 회신드립니다. 가격표·신청 절차 등 궁금한 점은 "기타 문의"란에 자유롭게 남겨주세요.</p>
-
-    <form id="inquiry-form" class="inquiry-form">
-      <div class="form-row">
-        <label for="articleUrl">기사 링크(URL) <span class="required">*</span></label>
-        <input type="url" id="articleUrl" name="articleUrl" placeholder="https://www.mk.co.kr/...">
-      </div>
-
-      <div class="form-row form-row-split">
-        <div>
-          <label for="purposeCategory">사용 목적 <span class="required">*</span></label>
-          <select id="purposeCategory" name="purposeCategory">
-            <option value="" selected disabled>선택해주세요</option>
-            <option value="방송">방송</option>
-            <option value="출판">출판</option>
-            <option value="온라인 게재">온라인 게재</option>
-            <option value="광고/홍보">광고/홍보</option>
-            <option value="기타">기타</option>
-          </select>
-        </div>
-        <div>
-          <label for="purposeDetail">세부 용도 <span class="required">*</span></label>
-          <input type="text" id="purposeDetail" name="purposeDetail" placeholder="예: 유튜브, 사내 인트라넷 등">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <label for="specialNote">특이사항 <span class="optional">(선택)</span></label>
-        <textarea id="specialNote" name="specialNote" rows="3" placeholder="사용 조건 중 애매하거나 별도로 안내가 필요한 사항이 있다면 적어주세요."></textarea>
-      </div>
-
-      <div class="form-row">
-        <label for="etcInquiry">기타 문의 <span class="optional">(선택)</span></label>
-        <textarea id="etcInquiry" name="etcInquiry" rows="3" placeholder="가격, 신청 절차 등 궁금한 점을 자유롭게 남겨주세요."></textarea>
-      </div>
-
-      <div class="form-row form-row-split">
-        <div>
-          <label for="companyName">회사명 <span class="required">*</span></label>
-          <input type="text" id="companyName" name="companyName" required>
-        </div>
-        <div>
-          <label for="managerName">담당자명 <span class="optional">(선택)</span></label>
-          <input type="text" id="managerName" name="managerName">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <label for="contact">이메일 또는 연락처 <span class="required">*</span></label>
-        <input type="text" id="contact" name="contact" placeholder="회신받으실 이메일 또는 전화번호" required>
-        <p class="field-hint">회신을 위해 반드시 입력해주세요.</p>
-      </div>
-
-      <button type="submit" class="btn btn-primary btn-submit">문의 제출하기</button>
-    </form>
-
-    <div id="inquiry-success" class="success-box hidden">
-      <div class="success-title">문의가 접수되었습니다</div>
-      <p>담당자 확인 후 회신드리겠습니다.</p>
-      <button type="button" id="inquiry-reset" class="btn btn-ghost">새 문의 작성하기</button>
+    <div class="form-tabs" role="tablist">
+      <button type="button" class="form-tab active" role="tab" aria-selected="true" data-tab-target="application">
+        <span class="tab-title">콘텐츠 구매 신청서 작성</span>
+        <span class="tab-sub">구매 확정 시 · 검토 후 사용허가서 자동 발급</span>
+      </button>
+      <button type="button" class="form-tab" role="tab" aria-selected="false" data-tab-target="inquiry">
+        <span class="tab-title">사전 문의하기</span>
+        <span class="tab-sub">단가·특수 조건 상담 · 챗봇에 먼저 질문해보세요</span>
+      </button>
     </div>
 
-    <div id="inquiry-error" class="error-box hidden"></div>
+    <!-- 탭 1: 구매 신청서 작성 -->
+    <div id="tab-panel-application" class="tab-panel">
+      <form id="application-form" class="inquiry-form" novalidate>
+        <div class="form-section-title">신청자(기업/기관) 정보</div>
+        <div class="form-row form-row-split">
+          <div>
+            <label for="appCompanyName">법인명(기관명) <span class="required">*</span></label>
+            <input type="text" id="appCompanyName" name="appCompanyName" placeholder="예: (주)매경에이엑스">
+          </div>
+          <div>
+            <label for="appBizRegNo">사업자등록번호 <span class="required">*</span></label>
+            <input type="text" id="appBizRegNo" name="appBizRegNo" placeholder="000-00-00000" maxlength="12">
+          </div>
+        </div>
+
+        <div class="form-row form-row-split">
+          <div>
+            <label for="appAddress">주소 <span class="required">*</span></label>
+            <input type="text" id="appAddress" name="appAddress" placeholder="사업자등록증 상의 주소 입력">
+          </div>
+          <div>
+            <label for="appPhone">전화번호 <span class="required">*</span></label>
+            <input type="text" id="appPhone" name="appPhone" placeholder="예: 02-2000-2114" maxlength="13">
+          </div>
+        </div>
+
+        <div class="form-row form-row-split">
+          <div>
+            <label for="appManagerName">담당자명 <span class="required">*</span></label>
+            <input type="text" id="appManagerName" name="appManagerName" placeholder="홍길동">
+          </div>
+          <div>
+            <label for="appEmail">담당자 e-mail (허가서 수신용) <span class="required">*</span></label>
+            <input type="email" id="appEmail" name="appEmail" placeholder="사용허가서를 받으실 이메일 주소">
+          </div>
+        </div>
+
+        <div class="form-divider"></div>
+        <div class="form-section-title">콘텐츠 및 사용 정보</div>
+
+        <div class="form-row">
+          <div class="label-with-hint">
+            <label>구매 기사 정보 <span class="required">*</span></label>
+            <span class="label-sub">여러 건 구매 시 '+ 기사 추가' 버튼을 눌러주세요.</span>
+          </div>
+          <div id="article-list"></div>
+          <button type="button" id="article-add-btn" class="btn btn-ghost">+ 기사 추가</button>
+        </div>
+
+        <div class="form-row">
+          <label>사용목적 <span class="required">*</span></label>
+          <div class="radio-group" id="app-purpose-radios">
+            <label class="radio-option"><input type="radio" name="appPurposeCategory" value="방송"><span>방송</span></label>
+            <label class="radio-option"><input type="radio" name="appPurposeCategory" value="출판"><span>출판</span></label>
+            <label class="radio-option"><input type="radio" name="appPurposeCategory" value="온라인 게재"><span>온라인 게재</span></label>
+            <label class="radio-option"><input type="radio" name="appPurposeCategory" value="광고/홍보"><span>광고/홍보</span></label>
+            <label class="radio-option"><input type="radio" name="appPurposeCategory" value="기타"><span>기타</span></label>
+          </div>
+          <div id="app-detail-chips" class="detail-chips hidden"></div>
+          <input type="text" id="appPurposeDetail" name="appPurposeDetail" placeholder="세부 용도를 선택하거나 직접 입력해주세요 (예: 유튜브 영상에 삽입)">
+        </div>
+
+        <div class="form-row">
+          <label for="appSpecialNote">특이사항 <span class="optional">(선택)</span></label>
+          <textarea id="appSpecialNote" name="appSpecialNote" rows="2" placeholder="PDF 원본 요청(+30만원), 영문 번역 사용 등 별도 조건이 있다면 기재해 주세요."></textarea>
+        </div>
+
+        <div class="form-divider"></div>
+        <div class="form-section-title">결제 및 세금계산서 정보</div>
+
+        <div class="form-row">
+          <div class="label-row-between">
+            <label for="appTaxInvoiceEmail">세금계산서 수신 메일 <span class="required">*</span></label>
+            <label class="same-email-check">
+              <input type="checkbox" id="same-as-app-email">
+              <span>담당자 e-mail과 동일</span>
+            </label>
+          </div>
+          <input type="email" id="appTaxInvoiceEmail" name="appTaxInvoiceEmail" placeholder="세금계산서를 수령하실 이메일 주소">
+          <p class="field-hint">청구액은 담당자 검토 후 사용허가서에 기재되어 안내되며, 세금계산서 수령 후 30일 이내 입금하시면 됩니다.</p>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-submit">신청서 제출하기</button>
+      </form>
+
+      <div id="application-success" class="success-box hidden">
+        <div class="success-title">신청서가 정상적으로 접수되었습니다</div>
+        <p>담당자가 청구액을 확인한 후, <strong>콘텐츠 사용허가서</strong>를 입력하신 e-mail로 발급해 드립니다.</p>
+        <p id="application-sync-status" class="sync-status"></p>
+        <div class="success-actions">
+          <a id="application-pdf-download" class="btn btn-primary hidden" download="신청서.pdf">제출한 신청서 PDF 다운로드</a>
+          <button type="button" id="application-reset" class="btn btn-ghost">새 신청서 작성하기</button>
+        </div>
+      </div>
+
+      <div id="application-error" class="error-box hidden"></div>
+
+      <p class="submit-guide">사내 품의용 참고 양식이 필요하시면 <a href="assets/매경_콘텐츠구매신청서.xlsx" download>엑셀 양식(매경_콘텐츠구매신청서.xlsx)을 다운로드</a>하실 수 있습니다. (실제 접수는 위 웹 폼으로 진행해 주세요)</p>
+    </div>
+
+    <!-- 탭 2: 사전 문의하기 -->
+    <div id="tab-panel-inquiry" class="tab-panel hidden">
+      <div class="chatbot-nudge">
+        <div>
+          <strong>잠깐! 자주 묻는 질문은 우측 하단 챗봇에서 1초 만에 답변을 확인하실 수 있습니다.</strong>
+          <span>PDF 파일 제공, 영문 번역 가능 여부, 학술 할인, MBN 기사 문의 등</span>
+        </div>
+        <button type="button" id="open-chatbot-from-inquiry" class="btn btn-ghost btn-sm">챗봇 열기</button>
+      </div>
+
+      <form id="inquiry-form" class="inquiry-form" novalidate>
+        <div class="form-row">
+          <label for="articleUrl">기사 링크(URL) <span class="required">*</span></label>
+          <input type="url" id="articleUrl" name="articleUrl" placeholder="https://www.mk.co.kr/...">
+        </div>
+
+        <div class="form-row form-row-split">
+          <div>
+            <label for="purposeCategory">사용 목적 <span class="required">*</span></label>
+            <select id="purposeCategory" name="purposeCategory">
+              <option value="" selected disabled>선택해주세요</option>
+              <option value="방송">방송</option>
+              <option value="출판">출판</option>
+              <option value="온라인 게재">온라인 게재</option>
+              <option value="광고/홍보">광고/홍보</option>
+              <option value="기타">기타</option>
+            </select>
+          </div>
+          <div>
+            <label for="purposeDetail">세부 용도 <span class="required">*</span></label>
+            <input type="text" id="purposeDetail" name="purposeDetail" placeholder="예: 유튜브, 사내 인트라넷 등">
+          </div>
+        </div>
+        <div id="inq-detail-chips" class="detail-chips detail-chips-inq hidden"></div>
+
+        <div class="form-row">
+          <label for="specialNote">특이사항 <span class="optional">(선택 — 입력 시 담당자 우선 확인)</span></label>
+          <textarea id="specialNote" name="specialNote" rows="3" placeholder="사용 조건 중 애매하거나 별도로 안내가 필요한 사항이 있다면 적어주세요."></textarea>
+        </div>
+
+        <div class="form-row">
+          <label for="etcInquiry">기타 문의 <span class="optional">(선택)</span></label>
+          <textarea id="etcInquiry" name="etcInquiry" rows="3" placeholder="가격, 신청 절차 등 궁금한 점을 자유롭게 남겨주세요."></textarea>
+        </div>
+
+        <div class="form-row form-row-split">
+          <div>
+            <label for="companyName">회사명(소속) <span class="required">*</span></label>
+            <input type="text" id="companyName" name="companyName" placeholder="예: (주)매경에이엑스" required>
+          </div>
+          <div>
+            <label for="managerName">담당자명 <span class="optional">(선택)</span></label>
+            <input type="text" id="managerName" name="managerName" placeholder="홍길동">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label for="contact">이메일 또는 연락처 <span class="required">*</span></label>
+          <input type="text" id="contact" name="contact" placeholder="회신받으실 이메일 또는 전화번호" required>
+          <p class="field-hint">담당자가 회신드릴 수 있도록 정확한 이메일 또는 연락처를 입력해주세요.</p>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-submit">문의 제출하기</button>
+      </form>
+
+      <div id="inquiry-success" class="success-box hidden">
+        <div class="success-title">문의가 정상적으로 접수되었습니다</div>
+        <p>담당자 확인 후 남겨주신 연락처(이메일)로 신속히 회신드리겠습니다.</p>
+        <p id="inquiry-sync-status" class="sync-status"></p>
+        <div class="success-actions">
+          <button type="button" id="inquiry-reset" class="btn btn-ghost">새 문의 작성하기</button>
+        </div>
+      </div>
+
+      <div id="inquiry-error" class="error-box hidden"></div>
+    </div>
   </section>
 
 </main>
 
 <footer class="site-footer">
   <div class="container">
-    <p>기타 문의사항은 moon.chaerin@mkinternet.com 으로 연락주시기 바랍니다.</p>
+    <p>기타 문의사항은 <a href="mailto:moon.chaerin@mkinternet.com">moon.chaerin@mkinternet.com</a> 으로 연락주시기 바랍니다.</p>
     <p class="copyright">(주) 매경에이엑스 (www.mk.co.kr)</p>
   </div>
 </footer>
@@ -227,14 +394,15 @@
 <div id="faq-chat-widget">
   <div id="faq-chat-panel" class="hidden">
     <div class="faq-chat-header">
-      <span>무엇이든 물어보세요</span>
+      <span>매경 콘텐츠 구매 도우미</span>
       <button type="button" id="faq-chat-close" aria-label="닫기">×</button>
     </div>
     <div id="faq-chat-messages" class="faq-chat-messages">
-      <div class="faq-msg faq-msg-bot">안녕하세요! 콘텐츠 구매 관련 자주 묻는 질문에 답해드려요. 예: "PDF로 받을 수 있나요?"</div>
+      <div class="faq-msg faq-msg-bot">안녕하세요! 콘텐츠 구매와 관련해 자주 묻는 질문을 아래 버튼에서 선택하거나 직접 입력해 보세요.</div>
     </div>
+    <div id="faq-quick-chips" class="faq-quick-chips"></div>
     <form id="faq-chat-form" class="faq-chat-form">
-      <input type="text" id="faq-chat-input" placeholder="질문을 입력하세요" autocomplete="off">
+      <input type="text" id="faq-chat-input" placeholder="질문을 입력하세요 (예: PDF, 번역, 학술)" autocomplete="off">
       <button type="submit" class="btn btn-primary">전송</button>
     </form>
   </div>
