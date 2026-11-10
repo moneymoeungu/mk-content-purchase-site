@@ -4,9 +4,8 @@
 // 알림을 받을 담당자 메일 목록. 팀원을 추가하려면 쉼표로 구분해서 더 넣으면 됩니다.
 var NOTIFY_EMAILS = [
   "moon.chaerin@mkinternet.com",
-  "pyun.heeje@mkinternet.com",
-  "kim.heeyeon@mkinternet.com",
-  "kim.jiwoo@mkinternet.com"
+  "kim.taehun@mkinternet.com",
+  "an.hyekyoung@mkinternet.com"
 ];
 var NOTIFY_EMAIL_LIST = NOTIFY_EMAILS.join(","); // MailApp 수신자용 (쉼표 구분 문자열)
 var NOTIFY_EMAIL_PRIMARY = NOTIFY_EMAILS[0]; // 안내문에 "문의처"로 표시할 대표 메일
