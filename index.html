@@ -393,9 +393,16 @@
 
 <div id="faq-chat-widget">
   <div id="faq-chat-panel" class="hidden">
+    <div id="faq-chat-resizer" class="faq-chat-resizer" title="드래그하여 창 크기 조절" aria-label="창 크기 조절"></div>
     <div class="faq-chat-header">
-      <span>매경 콘텐츠 구매 도우미</span>
-      <button type="button" id="faq-chat-close" aria-label="닫기">×</button>
+      <div class="faq-header-title">
+        <img src="assets/owl-3d.png" alt="" class="faq-header-avatar">
+        <span>챗봇 문의</span>
+      </div>
+      <div class="faq-header-actions">
+        <button type="button" id="faq-chat-expand" class="faq-header-btn" title="크게 보기 / 원래 크기" aria-label="창 크기 전환">⤢</button>
+        <button type="button" id="faq-chat-close" class="faq-header-btn" aria-label="닫기">×</button>
+      </div>
     </div>
     <div id="faq-chat-messages" class="faq-chat-messages">
       <div class="faq-msg faq-msg-bot">안녕하세요! 콘텐츠 구매와 관련해 자주 묻는 질문을 아래 버튼에서 선택하거나 직접 입력해 보세요.</div>
@@ -406,17 +413,8 @@
       <button type="submit" class="btn btn-primary">전송</button>
     </form>
   </div>
-  <button type="button" id="faq-chat-toggle" aria-label="문의 챗봇 열기">
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M6 5L8 9" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round"/>
-      <path d="M18 5L16 9" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round"/>
-      <ellipse cx="12" cy="13" rx="7" ry="6.5" fill="#FFFFFF"/>
-      <circle cx="9" cy="12" r="2.3" fill="#E8801A"/>
-      <circle cx="15" cy="12" r="2.3" fill="#E8801A"/>
-      <circle cx="9" cy="12" r="1" fill="#FFFFFF"/>
-      <circle cx="15" cy="12" r="1" fill="#FFFFFF"/>
-      <path d="M12 14.5L10.7 16.5H13.3L12 14.5Z" fill="#C96C0F"/>
-    </svg>
+  <button type="button" id="faq-chat-toggle" aria-label="챗봇 문의 열기">
+    <img src="assets/owl-3d.png" alt="챗봇 문의" class="faq-toggle-owl">
   </button>
 </div>
 

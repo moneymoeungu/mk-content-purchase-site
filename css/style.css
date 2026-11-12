@@ -926,33 +926,40 @@ a { color: var(--orange-dark); }
 }
 
 #faq-chat-toggle {
-  width: 56px;
-  height: 56px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
-  background: var(--orange);
-  border: 0.5px solid var(--orange-dark);
+  background: var(--white);
+  border: 3px solid var(--orange);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   padding: 0;
+  overflow: hidden;
 }
 
 #faq-chat-toggle:hover {
-  background: var(--orange-dark);
+  border-color: var(--orange-dark);
 }
 
-#faq-chat-toggle svg {
-  width: 32px;
-  height: 32px;
+.faq-toggle-owl {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 #faq-chat-panel {
   position: absolute;
   right: 0;
-  bottom: 68px;
-  width: 350px;
-  max-width: calc(100vw - 48px);
+  bottom: 76px;
+  width: 360px;
+  height: 480px;
+  min-width: 300px;
+  min-height: 360px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 110px);
   background: var(--white);
   border: 0.5px solid var(--border);
   border-radius: var(--radius-lg);
@@ -961,30 +968,79 @@ a { color: var(--orange-dark); }
   overflow: hidden;
 }
 
+.faq-chat-resizer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  cursor: nwse-resize;
+  z-index: 5;
+}
+
+.faq-chat-resizer::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid rgba(255, 255, 255, 0.85);
+  border-left: 2px solid rgba(255, 255, 255, 0.85);
+}
+
 .faq-chat-header {
   background: var(--orange);
   color: var(--white);
-  padding: 12px 16px;
+  padding: 10px 14px 10px 18px;
   font-weight: 700;
   font-size: 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  user-select: none;
 }
 
-.faq-chat-header button {
+.faq-header-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.faq-header-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 1.5px solid var(--white);
+  object-fit: cover;
+}
+
+.faq-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.faq-header-btn {
   background: none;
   border: none;
   color: var(--white);
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1;
   cursor: pointer;
-  padding: 0;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.faq-header-btn:hover {
+  background: var(--orange-dark);
 }
 
 .faq-chat-messages {
   padding: 12px;
-  height: 280px;
+  flex: 1;
+  min-height: 0;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
