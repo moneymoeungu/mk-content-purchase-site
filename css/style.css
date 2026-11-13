@@ -53,14 +53,26 @@ a { color: var(--orange-dark); }
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-weight: 700;
   font-size: 18px;
 }
 
+.brand-logo {
+  height: 24px;
+  width: auto;
+  display: block;
+}
+
 .brand span {
   color: var(--orange);
-  font-weight: 500;
-  margin-left: 6px;
+  font-weight: 600;
+  font-size: 16px;
+  padding-left: 10px;
+  border-left: 0.5px solid var(--border);
+  line-height: 1.2;
 }
 
 .nav-links {
@@ -744,6 +756,28 @@ a { color: var(--orange-dark); }
 }
 
 /* 구매 기사 목록 (신청서) */
+.content-guide-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.guide-chip {
+  background: var(--orange-light);
+  color: var(--text);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.guide-chip strong {
+  color: var(--orange-dark);
+  margin-right: 4px;
+}
+
 #article-list {
   margin-bottom: 10px;
 }
@@ -884,8 +918,9 @@ a { color: var(--orange-dark); }
 
 .copyright {
   margin-top: 6px;
-  font-weight: 700;
-  color: var(--text);
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 12.5px;
 }
 
 @media (max-width: 780px) {
