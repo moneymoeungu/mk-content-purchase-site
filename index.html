@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>매일경제 뉴스콘텐츠 구매 안내</title>
-<link rel="stylesheet" href="css/style.css?v=4">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
 
@@ -25,25 +26,22 @@
 <section class="hero">
   <div class="container">
     <h1>매일경제 기사, 이렇게 구매하세요</h1>
-    <p>기사(텍스트/사진) 재사용을 원하시는 경우, 아래 사용료를 확인하시고 온라인으로 간편하게 접수해 주세요.<br>담당자 확인 후 이메일로 회신 및 사용허가서를 발급해 드립니다.</p>
+    <p>기사(텍스트·사진·지면 PDF) 재사용을 원하시는 경우, 아래 기준 단가를 확인하시고 온라인으로 간편하게 접수해 주세요.<br>담당자 검토 후 이메일로 청구액 안내 및 콘텐츠 사용허가서를 발급해 드립니다.</p>
     <div class="process-steps">
       <div class="process-step">
-        <span class="step-num">STEP 1</span>
+        <span class="step-num">01</span>
         <span class="step-title">단가 및 예상 견적 확인</span>
       </div>
-      <div class="process-arrow">→</div>
       <div class="process-step">
-        <span class="step-num">STEP 2</span>
+        <span class="step-num">02</span>
         <span class="step-title">신청서 또는 문의 접수</span>
       </div>
-      <div class="process-arrow">→</div>
       <div class="process-step">
-        <span class="step-num">STEP 3</span>
+        <span class="step-num">03</span>
         <span class="step-title">청구액 안내·허가서 발급</span>
       </div>
-      <div class="process-arrow">→</div>
       <div class="process-step">
-        <span class="step-num">STEP 4</span>
+        <span class="step-num">04</span>
         <span class="step-title">계산서 수령 후 30일 내 결제</span>
       </div>
     </div>
@@ -60,157 +58,159 @@
       </div>
     </div>
 
-    <div class="table-wrap">
-      <table class="price-table" id="price-table">
-        <thead>
-          <tr>
-            <th>사용처</th>
-            <th>용도</th>
-            <th class="align-right">건당 사용료(VAT별도)</th>
-            <th class="align-center">빠른 선택</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="price-row" data-category="방송" data-detail="TV/OTT" data-price="800000">
-            <td rowspan="3" class="category">방송</td>
-            <td>TV/OTT</td>
-            <td class="align-right price-cell">800,000원</td>
-            <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
-          </tr>
-          <tr class="price-row" data-category="방송" data-detail="유튜브" data-price="500000">
-            <td>유튜브</td>
-            <td class="align-right price-cell">500,000원</td>
-            <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
-          </tr>
-          <tr class="price-row" data-category="방송" data-detail="영화" data-price="1000000">
-            <td>영화</td>
-            <td class="align-right price-cell">1,000,000원</td>
-            <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
-          </tr>
+    <div class="pricing-ledger">
+      <div class="table-wrap">
+        <table class="price-table" id="price-table">
+          <thead>
+            <tr>
+              <th>사용처</th>
+              <th>용도</th>
+              <th class="align-right">건당 사용료(VAT별도)</th>
+              <th class="align-center col-select">선택</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="price-row group-start" data-category="방송" data-detail="TV/OTT" data-price="800000">
+              <td rowspan="3" class="category">방송</td>
+              <td>TV/OTT</td>
+              <td class="align-right price-cell">800,000원</td>
+              <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
+            </tr>
+            <tr class="price-row" data-category="방송" data-detail="유튜브" data-price="500000">
+              <td>유튜브</td>
+              <td class="align-right price-cell">500,000원</td>
+              <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
+            </tr>
+            <tr class="price-row" data-category="방송" data-detail="영화" data-price="1000000">
+              <td>영화</td>
+              <td class="align-right price-cell">1,000,000원</td>
+              <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
+            </tr>
 
-          <tr class="price-row" data-category="출판" data-detail="도서" data-price="350000">
-            <td rowspan="2" class="category">출판</td>
-            <td>도서</td>
-            <td class="align-right price-cell">350,000원</td>
-            <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
-          </tr>
-          <tr class="price-row" data-category="출판" data-detail="학술지, 교과서 등" data-price="150000">
-            <td>학술지, 교과서 등</td>
-            <td class="align-right price-cell">150,000원</td>
-            <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
-          </tr>
+            <tr class="price-row group-start" data-category="출판" data-detail="도서" data-price="350000">
+              <td rowspan="2" class="category">출판</td>
+              <td>도서</td>
+              <td class="align-right price-cell">350,000원</td>
+              <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
+            </tr>
+            <tr class="price-row" data-category="출판" data-detail="학술지, 교과서 등" data-price="150000">
+              <td>학술지, 교과서 등</td>
+              <td class="align-right price-cell">150,000원</td>
+              <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
+            </tr>
 
-          <tr class="price-row" data-category="온라인 게재" data-detail="홈페이지" data-price="300000">
-            <td rowspan="4" class="category">온라인 게재</td>
-            <td>홈페이지</td>
-            <td class="align-right price-cell">300,000원</td>
-            <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
-          </tr>
-          <tr class="price-row" data-category="온라인 게재" data-detail="SNS(블로그, 인스타그램, 페이스북)" data-price="500000">
-            <td>SNS(블로그, 인스타그램, 페이스북)</td>
-            <td class="align-right price-cell">500,000원</td>
-            <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
-          </tr>
-          <tr class="price-row" data-category="온라인 게재" data-detail="뉴스레터" data-price="300000">
-            <td>뉴스레터</td>
-            <td class="align-right price-cell">300,000원</td>
-            <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
-          </tr>
-          <tr class="price-row" data-category="온라인 게재" data-detail="사내 인트라넷" data-price="300000">
-            <td>사내 인트라넷</td>
-            <td class="align-right price-cell">300,000원</td>
-            <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
-          </tr>
+            <tr class="price-row group-start" data-category="온라인 게재" data-detail="홈페이지" data-price="300000">
+              <td rowspan="4" class="category">온라인 게재</td>
+              <td>홈페이지</td>
+              <td class="align-right price-cell">300,000원</td>
+              <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
+            </tr>
+            <tr class="price-row" data-category="온라인 게재" data-detail="SNS(블로그, 인스타그램, 페이스북)" data-price="500000">
+              <td>SNS(블로그, 인스타그램, 페이스북)</td>
+              <td class="align-right price-cell">500,000원</td>
+              <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
+            </tr>
+            <tr class="price-row" data-category="온라인 게재" data-detail="뉴스레터" data-price="300000">
+              <td>뉴스레터</td>
+              <td class="align-right price-cell">300,000원</td>
+              <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
+            </tr>
+            <tr class="price-row" data-category="온라인 게재" data-detail="사내 인트라넷" data-price="300000">
+              <td>사내 인트라넷</td>
+              <td class="align-right price-cell">300,000원</td>
+              <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
+            </tr>
 
-          <tr class="price-row" data-category="광고/홍보" data-detail="오프라인 광고 소재 제작" data-price="3000000">
-            <td rowspan="3" class="category">광고/홍보</td>
-            <td>오프라인 광고 소재 제작</td>
-            <td class="align-right price-cell">3,000,000원</td>
-            <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
-          </tr>
-          <tr class="price-row" data-category="광고/홍보" data-detail="인쇄물(팜플렛, 브로슈어 등)" data-price="700000">
-            <td>인쇄물(팜플렛, 브로슈어 등)</td>
-            <td class="align-right price-cell">700,000원</td>
-            <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
-          </tr>
-          <tr class="price-row" data-category="광고/홍보" data-detail="전시회 활용" data-price="600000">
-            <td>전시회 활용</td>
-            <td class="align-right price-cell">600,000원</td>
-            <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- 실시간 예상 견적 계산기 -->
-    <div class="calculator-card" id="calculator-card">
-      <div class="calc-header">
-        <span class="calc-badge">실시간 예상 견적 계산기</span>
-        <span class="calc-selected-label" id="calc-selected-label">위 가격표에서 용도를 선택해주세요 (기본: 온라인 게재 - 홈페이지)</span>
+            <tr class="price-row group-start" data-category="광고/홍보" data-detail="오프라인 광고 소재 제작" data-price="3000000">
+              <td rowspan="3" class="category">광고/홍보</td>
+              <td>오프라인 광고 소재 제작</td>
+              <td class="align-right price-cell">3,000,000원</td>
+              <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
+            </tr>
+            <tr class="price-row" data-category="광고/홍보" data-detail="인쇄물(팜플렛, 브로슈어 등)" data-price="700000">
+              <td>인쇄물(팜플렛, 브로슈어 등)</td>
+              <td class="align-right price-cell">700,000원</td>
+              <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
+            </tr>
+            <tr class="price-row" data-category="광고/홍보" data-detail="전시회 활용" data-price="600000">
+              <td>전시회 활용</td>
+              <td class="align-right price-cell">600,000원</td>
+              <td class="align-center"><button type="button" class="btn-row-select">선택</button></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="calc-body">
-        <div class="calc-controls">
-          <div class="calc-control-item">
-            <label for="calc-count">구매 건수</label>
-            <div class="qty-control">
-              <button type="button" id="calc-qty-minus" aria-label="건수 감소">−</button>
-              <input type="number" id="calc-count" value="1" min="1" max="99">
-              <button type="button" id="calc-qty-plus" aria-label="건수 증가">+</button>
+
+      <!-- 실시간 예상 견적 계산기 (하단 통합 바) -->
+      <div class="calculator-card" id="calculator-card">
+        <div class="calc-header">
+          <span class="calc-title">예상 견적 시뮬레이션</span>
+          <span class="calc-selected-label" id="calc-selected-label">선택됨: [온라인 게재] 홈페이지 (기본 단가 300,000원)</span>
+        </div>
+        <div class="calc-body">
+          <div class="calc-controls">
+            <div class="calc-control-item">
+              <label for="calc-count">구매 건수</label>
+              <div class="qty-control">
+                <button type="button" id="calc-qty-minus" aria-label="건수 감소">−</button>
+                <input type="number" id="calc-count" value="1" min="1" max="99">
+                <button type="button" id="calc-qty-plus" aria-label="건수 증가">+</button>
+              </div>
+            </div>
+            <div class="calc-control-item calc-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="calc-opt-pdf">
+                <span>지면 PDF 파일 제공 (+300,000원/건)</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="calc-opt-academic">
+                <span>학술 연구 목적 정식 계약 (50% 할인)</span>
+              </label>
             </div>
           </div>
-          <div class="calc-control-item calc-options">
-            <label class="checkbox-label">
-              <input type="checkbox" id="calc-opt-pdf">
-              <span>지면 PDF 파일 제공 (+300,000원/건)</span>
-            </label>
-            <label class="checkbox-label">
-              <input type="checkbox" id="calc-opt-academic">
-              <span>학술 연구 목적 정식 계약 (50% 할인)</span>
-            </label>
-          </div>
-        </div>
-        <div class="calc-result">
-          <div class="calc-price-box">
-            <div class="calc-price-label">예상 청구 금액 (VAT 별도)</div>
-            <div class="calc-price-value" id="calc-total-price">300,000원</div>
-            <div class="calc-price-vat" id="calc-vat-price">VAT 포함 시 330,000원</div>
-            <div class="calc-option-warn hidden" id="calc-option-warn"></div>
-          </div>
-          <div class="calc-actions">
-            <button type="button" id="calc-apply-btn" class="btn btn-primary">이 조건으로 구매 신청하기</button>
-            <button type="button" id="calc-inquire-btn" class="btn btn-ghost">이 조건으로 문의하기</button>
+          <div class="calc-result">
+            <div class="calc-price-box">
+              <div class="calc-price-label">예상 청구 금액 (VAT 별도)</div>
+              <div class="calc-price-value" id="calc-total-price">300,000원</div>
+              <div class="calc-price-vat" id="calc-vat-price">VAT 포함 시 330,000원 (1건 기준)</div>
+              <div class="calc-option-warn hidden" id="calc-option-warn"></div>
+            </div>
+            <div class="calc-actions">
+              <button type="button" id="calc-apply-btn" class="btn btn-primary">이 조건으로 구매 신청</button>
+              <button type="button" id="calc-inquire-btn" class="btn btn-ghost">사전 문의하기</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="notice-banner">
-      무단 사용 적발 시 <strong>30배의 배상금 청구 및 법적 조치</strong>가 진행될 수 있습니다.
+    <div class="pricing-footnotes">
+      <p class="footnote-warn"><strong>저작권 안내:</strong> 무단 사용 적발 시 <strong>30배의 배상금 청구 및 법적 조치</strong>가 진행될 수 있습니다.</p>
+      <p class="footnote-muted">※ 비영리·무료 목적의 전시라 하더라도, 기사 원문을 전시·복제하여 이용하실 경우에는 별도의 뉴스콘텐츠 구매 절차가 적용됩니다.</p>
     </div>
-    <p class="notice-small">※ 비영리·무료 목적의 전시라 하더라도, 기사 원문을 전시·복제하여 이용하실 경우에는 별도의 뉴스콘텐츠 구매 절차가 적용됩니다.</p>
   </section>
 
   <section id="forms-section" class="section">
     <div class="section-head">
-      <h2>2. 온라인 접수 (구매 신청 / 사전 문의)</h2>
+      <h2>2. 온라인 접수</h2>
       <p class="section-desc">구매가 확정되셨다면 <strong>구매 신청서 작성</strong>을, 단가·조건 상담이 필요하시면 <strong>사전 문의하기</strong>를 선택해 주세요.</p>
     </div>
 
     <div class="form-tabs" role="tablist">
       <button type="button" class="form-tab active" role="tab" aria-selected="true" data-tab-target="application">
         <span class="tab-title">콘텐츠 구매 신청서 작성</span>
-        <span class="tab-sub">구매 확정 시 · 검토 후 사용허가서 자동 발급</span>
+        <span class="tab-sub">구매 확정 · 담당자 검토 후 사용허가서 이메일 발급</span>
       </button>
       <button type="button" class="form-tab" role="tab" aria-selected="false" data-tab-target="inquiry">
         <span class="tab-title">사전 문의하기</span>
-        <span class="tab-sub">단가·특수 조건 상담 · 챗봇에 먼저 질문해보세요</span>
+        <span class="tab-sub">단가 및 특수 조건 상담</span>
       </button>
     </div>
 
     <!-- 탭 1: 구매 신청서 작성 -->
     <div id="tab-panel-application" class="tab-panel">
       <form id="application-form" class="inquiry-form" novalidate>
-        <div class="form-section-title">신청자(기업/기관) 정보</div>
+        <div class="form-section-title">신청자(기업·기관) 정보</div>
         <div class="form-row form-row-split">
           <div>
             <label for="appCompanyName">법인명(기관명) <span class="required">*</span></label>
@@ -250,13 +250,13 @@
         <div class="form-row">
           <div class="label-with-hint">
             <label>구매 기사 정보 <span class="required">*</span></label>
-            <span class="label-sub">여러 건 구매 시 '+ 기사 추가' 버튼을 눌러주세요.</span>
+            <span class="label-sub">여러 건 구매 시 '+ 기사 추가'를 눌러주세요.</span>
           </div>
-          <div class="content-guide-chips">
-            <span class="guide-chip"><strong>출처 명기</strong> &lt;출처: 매일경제&gt; &lt;출처: 스타투데이&gt;</span>
-            <span class="guide-chip"><strong>외부 필진 기고문</strong> 저작권 없음(판매 불가)</span>
-            <span class="guide-chip"><strong>옛날 신문기사</strong> 제목란에 지면 페이지 함께 기재</span>
-          </div>
+          <ul class="content-guide-bar">
+            <li><strong>출처 명기</strong> &lt;출처: 매일경제&gt; &lt;출처: 스타투데이&gt;</li>
+            <li><strong>외부 필진 기고문</strong> 저작권 없음(판매 불가)</li>
+            <li><strong>옛날 신문기사</strong> 제목란에 지면 페이지 함께 기재</li>
+          </ul>
           <div id="article-list"></div>
           <button type="button" id="article-add-btn" class="btn btn-ghost">+ 기사 추가</button>
         </div>
@@ -276,7 +276,7 @@
 
         <div class="form-row">
           <label for="appSpecialNote">특이사항 <span class="optional">(선택)</span></label>
-          <textarea id="appSpecialNote" name="appSpecialNote" rows="2" placeholder="PDF 원본 요청(+30만원), 영문 번역 사용 등 별도 조건이 있다면 기재해 주세요."></textarea>
+          <textarea id="appSpecialNote" name="appSpecialNote" rows="2" placeholder="지면 PDF 원본 요청(+30만원), 영문 번역 사용 등 별도 조건이 있다면 기재해 주세요."></textarea>
         </div>
 
         <div class="form-divider"></div>
@@ -309,17 +309,17 @@
 
       <div id="application-error" class="error-box hidden"></div>
 
-      <p class="submit-guide">사내 품의용 참고 양식이 필요하시면 <a href="assets/매경_콘텐츠구매신청서.xlsx" download>엑셀 양식(매경_콘텐츠구매신청서.xlsx)을 다운로드</a>하실 수 있습니다. (실제 접수는 위 웹 폼으로 진행해 주세요)</p>
+      <p class="submit-guide">사내 품의용 참고 양식이 필요하시면 <a href="assets/매경_콘텐츠구매신청서.xlsx" download>엑셀 양식(매경_콘텐츠구매신청서.xlsx) 다운로드</a>를 이용해 주세요. (실제 접수는 위 웹 폼으로 진행)</p>
     </div>
 
     <!-- 탭 2: 사전 문의하기 -->
     <div id="tab-panel-inquiry" class="tab-panel hidden">
       <div class="chatbot-nudge">
         <div>
-          <strong>잠깐! 자주 묻는 질문은 우측 하단 챗봇에서 1초 만에 답변을 확인하실 수 있습니다.</strong>
-          <span>PDF 파일 제공, 영문 번역 가능 여부, 학술 할인, MBN 기사 문의 등</span>
+          <strong>자주 묻는 질문은 우측 하단 챗봇에서 바로 답변을 확인하실 수 있습니다.</strong>
+          <span>지면 PDF 제공, 영문 번역 가능 여부, 학술 할인, MBN 기사 문의 등</span>
         </div>
-        <button type="button" id="open-chatbot-from-inquiry" class="btn btn-ghost btn-sm">챗봇 열기</button>
+        <button type="button" id="open-chatbot-from-inquiry" class="btn btn-ghost btn-sm">챗봇 문의 열기</button>
       </div>
 
       <form id="inquiry-form" class="inquiry-form" novalidate>
@@ -426,8 +426,8 @@
   </button>
 </div>
 
-<script src="js/script.js?v=4"></script>
-<script src="js/faq-data.js?v=4"></script>
-<script src="js/faq-chat.js?v=4"></script>
+<script src="js/script.js?v=5"></script>
+<script src="js/faq-data.js?v=5"></script>
+<script src="js/faq-chat.js?v=5"></script>
 </body>
 </html>
